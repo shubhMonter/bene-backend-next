@@ -1091,6 +1091,7 @@ router.post("/add-product", upload.any(), async (req, res, next) => {
         productMeta.productid = product._id;
         productMeta.galleryimgdetails = galleryArray;
         productMeta.sectionbimage = photob.sectionbimage;
+        productMeta.attributeLists = req.body.attributeLists;
         if (req.body.page_attribute) {
           productMeta.attributecontent = req.body.page_attribute;
         }
@@ -1322,6 +1323,7 @@ router.post("/edit/:id", upload.any(), async function (req, res) {
     productMeta.warranty = req.body.warranty;
     productMeta.totalcbdmg = req.body.totalcbdmg;
     productMeta.cbdperunitmg = req.body.cbdperunitmg;
+    productMeta.attributeLists = req.body.attributeLists
     if (photob.labsheet) {
       if (photob.labsheet.length > 0) {
         productMeta.labsheet = photob.labsheet;

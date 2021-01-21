@@ -76,7 +76,7 @@ let productMetaSchema = Schema({
   },
   asin: { type: String },
   use: { type: String },
-  storage: { type: String },
+  storage: { type: String }, 
   warning: { type: String },
   indication: { type: String },
   direction: { type: String },
@@ -90,6 +90,13 @@ let productMetaSchema = Schema({
   fieldname: { type: String },
   labsheet: { type: String },
   reviews: [{ type: Schema.Types.ObjectId, ref: "Reviews" }],
+  attributeLists:[{
+    title:{type:String},
+    subAtrribute:[{
+      title:{type:String},
+      value:{type:String}
+    }]
+  }]
 });
 let ProductMeta = (module.exports = mongoose.model(
   "ProductMeta",
