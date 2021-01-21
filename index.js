@@ -67,7 +67,24 @@ app.use(
   })
 );
 //app.use(compression());
-app.use(cors({ origin: process.env.CLIENT_URL }));
+//app.use(cors({ origin: process.env.CLIENT_URL }));
+var whitelist = [
+	  "https://luxcars.in",
+	  "https://www.luxcars.in",
+	  "https://admin1.mddocz.com",
+	  "http://localhost:3000"
+];
+var corsOptions = {
+	  origin: function(origin, callback) {
+		      console.log(origin);
+		      if (whitelist.indexOf(origin) !== -1 || origin == undefined) {
+			            callback(null, true);
+			          } else {
+					        callback(new Error("Not allowed by CORS"));
+					      }
+		    }
+};
+app.use(cors(corsOptions));
 app.use(morgan("dev"));
 app.use(errorHandler);
 app.use(cookieparser());
